@@ -1,8 +1,6 @@
 package org.jaggeryjs.hostobjects.web;
 
 
-import org.apache.catalina.websocket.MessageInbound;
-import org.apache.catalina.websocket.WsOutbound;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jaggeryjs.hostobjects.file.FileHostObject;
@@ -30,8 +28,8 @@ public class WebSocketHostObject extends ScriptableObject {
     private static final String hostObjectName = "WebSocket";
 
     private ContextFactory contextFactory;
-    private MessageInbound inbound;
-	private WsOutbound outbound;
+    //private MessageInbound inbound;
+	//private WsOutbound outbound;
 	private Function textCallback = null;
     private Function onOpencallback = null;
     private Function onCloseCallback = null;
@@ -132,7 +130,7 @@ public class WebSocketHostObject extends ScriptableObject {
         }
 
         WebSocketHostObject who = (WebSocketHostObject) thisObj;
-        if (args[0] instanceof String) {
+        /*if (args[0] instanceof String) {
             try {
                 who.inbound.getWsOutbound().writeTextMessage(CharBuffer.wrap((String) args[0]));
             } catch (IOException e) {
@@ -152,10 +150,10 @@ public class WebSocketHostObject extends ScriptableObject {
                 log.error(e.getMessage(), e);
                 throw new ScriptException(e);
             }
-        }
+        }*/
     }
 
-    public void setInbound(MessageInbound inbound) {
+    /*public void setInbound(MessageInbound inbound) {
         this.inbound = inbound;
     }
     
@@ -165,7 +163,7 @@ public class WebSocketHostObject extends ScriptableObject {
 
 	public void setOutbound(WsOutbound outbound) {
 		this.outbound = outbound;
-	}
+	}*/
 
     public void processText(CharBuffer charBuffer) {
         if (textCallback == null) {
@@ -177,7 +175,7 @@ public class WebSocketHostObject extends ScriptableObject {
         RhinoEngine.exitContext();
     }
     
-    public void processOnOpen(WsOutbound wsOutbound) {
+   /* public void processOnOpen(WsOutbound wsOutbound) {
         if (onOpencallback == null) {
             return;
         }
@@ -185,8 +183,8 @@ public class WebSocketHostObject extends ScriptableObject {
         RhinoEngine.putContextProperty(EngineConstants.JAGGERY_CONTEXT, this.asyncContext);
         onOpencallback.call(cx, this, this, new Object[]{wsOutbound});
         RhinoEngine.exitContext();
-    }
-    
+    }*/
+
     public void processOnClose(int status) {
         if (onCloseCallback == null) {
             return;

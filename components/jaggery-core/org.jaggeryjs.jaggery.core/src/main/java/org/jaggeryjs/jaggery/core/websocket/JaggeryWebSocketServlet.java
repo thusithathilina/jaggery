@@ -1,7 +1,5 @@
 package org.jaggeryjs.jaggery.core.websocket;
 
-import org.apache.catalina.websocket.StreamInbound;
-import org.apache.catalina.websocket.WebSocketServlet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jaggeryjs.hostobjects.web.WebSocketHostObject;
@@ -19,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class JaggeryWebSocketServlet extends WebSocketServlet {
+public class JaggeryWebSocketServlet /*extends WebSocketServlet*/ {
 
-    private static final Log log = LogFactory.getLog(JaggeryWebSocketServlet.class);
+    /*private static final Log log = LogFactory.getLog(JaggeryWebSocketServlet.class);
 
     private WSMessageInBound wsMessageInBound = null;
 
@@ -48,6 +46,6 @@ public class JaggeryWebSocketServlet extends WebSocketServlet {
     @Override
     protected StreamInbound createWebSocketInbound(String s, HttpServletRequest request) {
         return wsMessageInBound;
-    }
+    }*/
 
 }
